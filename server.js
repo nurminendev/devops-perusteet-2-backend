@@ -53,6 +53,13 @@ const port = process.env.PORT || 4000
 
 const app = express()
 
+// Jos sovellus on kahden välityspalvelimen takana (nginx + cloudflare)
+// Jos seurasit kurssin esimerkkiä, käytä tätä
+app.set('trust proxy', 2)
+
+// Jos sovellus on vain yhden välityspalvelimen takana, esim. oma nginx mutta ei Cloudflare proxyä
+//app.set('trust proxy', 1)
+
 app.use(cors())
 app.use(express.json())
 
